@@ -29,6 +29,8 @@ public class QueryNews {
     public static String title;
     public static String section;
     public static String urlArticle;
+    private static final int READ_TIMEOUT = 1000;
+    private static final int CONNECT_TIMEOUT = 12000;
 
     /* Start to fetch data from API */
     public static List<NewsList> fetchData(String requestUrl){
@@ -72,8 +74,8 @@ public class QueryNews {
             /* Open Connection */
             urlConnection = (HttpsURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
-            urlConnection.setReadTimeout(1000);
-            urlConnection.setConnectTimeout(12000);
+            urlConnection.setReadTimeout(READ_TIMEOUT);
+            urlConnection.setConnectTimeout(CONNECT_TIMEOUT);
             urlConnection.connect();
 
             /* Handle http code */
@@ -137,9 +139,9 @@ public class QueryNews {
             /* Do a loop to catch all results*/
             for (int i = 0; i < results.length(); i++ ){
                 JSONObject index = results.getJSONObject(i);
-                title = index.getString("webTitle");
-                section = index.getString("sectionName");
-                urlArticle = index.getString("webUrl");
+                title = index.optString("webTitle");
+                section = index.optString("sectionName");
+                urlArticle = index.optString("webUrl");
 
                 /* Fill results on list */
                 newsLists.add(new NewsList(title, section, urlArticle));

@@ -19,13 +19,13 @@ public class NewsList {
     }
 
     /* Getters */
-    public String getmArticleUrl() {
+    public String getArticleUrl() {
         return mArticleUrl;
     }
-    public String getmTitle() {
+    public String getTitle() {
         return mTitle;
     }
-    public String getmSection() {
+    public String getSection() {
         return mSection;
     }
 }

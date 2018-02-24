@@ -35,11 +35,11 @@ public class NewsAdapter extends ArrayAdapter<com.example.android.newsapp.NewsLi
 
         /* Set title to textView */
         TextView titleView = listItemView.findViewById(R.id.title_view);
-        titleView.setText(currentItem.getmTitle());
+        titleView.setText(currentItem.getTitle());
 
         /* Set author to textView*/
         TextView sectionView = listItemView.findViewById(R.id.section_view);
-        sectionView.setText(currentItem.getmSection());
+        sectionView.setText(currentItem.getSection());
 
         return listItemView;
     }

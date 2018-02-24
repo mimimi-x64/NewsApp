@@ -12,6 +12,7 @@ import java.util.List;
 public class NewsLoader extends AsyncTaskLoader<List<NewsList>> {
 
     /* Query URL */
+    public static String urlSearch = "https://content.guardianapis.com/search?q=android&api-key=test";
     private String mUrl;
 
     /* Constructor to initialize Loader and pass Url to query */

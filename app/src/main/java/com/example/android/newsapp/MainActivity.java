@@ -15,7 +15,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<NewsList>> {
 
-    private String urlSearch = "https://content.guardianapis.com/search?q=android&api-key=test";
     private NewsAdapter newsAdapter;
 
     @Override
@@ -35,8 +34,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 NewsList newsList = newsAdapter.getItem(position);
 
                 /* Do a Intent to open and URL */
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(newsList.getmArticleUrl()));
-                if (intent.resolveActivity(getPackageManager()) != null){ startActivity(intent); }
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(newsList.getArticleUrl()));
+                if (intent.resolveActivity(getPackageManager()) != null){
+                    startActivity(intent);
+                }
             }
         });
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     /* Call the loader passing a List */
     @Override
     public Loader<List <NewsList>> onCreateLoader( int id, Bundle args ) {
-        return new NewsLoader(this, urlSearch);
+        return new NewsLoader(this, NewsLoader.urlSearch);
     }
 
     /* Check if is valid and show on Activity */
